@@ -13,14 +13,15 @@ fn main() -> std::io::Result<()> {
 
     let rendezvous_address = rendezvous_address.unwrap();
     let rendezvous_address = rendezvous_address.parse::<IpAddr>().unwrap();
-    let rendezvous = SocketAddr::new(rendezvous_address, 9999);
+    let rendezvous = SocketAddr::new(rendezvous_address, 3000);
     let local_address: String = local_address.unwrap();
 
-    let socket = UdpSocket::bind(local_address)?;
+    let socket = UdpSocket::bind(&local_address)?;
 
     let register_socket = socket.try_clone().unwrap();
+
     let register_handle = thread::spawn(move || {
-        let msg = register_socket.send_to(b"register", rendezvous);
+        let msg = register_socket.send_to(format!("register").as_bytes(), rendezvous);
         if msg.is_err() {
             println!("{}", msg.err().unwrap());
             return;
