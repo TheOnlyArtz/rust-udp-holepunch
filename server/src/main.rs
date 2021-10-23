@@ -1,7 +1,9 @@
 use std::net::UdpSocket;
 
 fn main() -> std::io::Result<()> {
-    let socket = UdpSocket::bind("127.0.0.1:9999")?;
+    // replace xxxx with your desired port
+    // replace S.S.S.S with your server address 
+    let socket = UdpSocket::bind("S.S.S.S:xxxx")?;
     let mut peers: Vec<String> = vec![];
 
     loop {
