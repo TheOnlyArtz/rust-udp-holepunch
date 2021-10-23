@@ -22,6 +22,7 @@ fn main() -> std::io::Result<()> {
     let register_handle = thread::spawn(move || {
         let msg = register_socket.send_to(b"register", rendezvous);
         if msg.is_err() {
+            println!("{}", msg.err().unwrap());
             return;
         }
 
