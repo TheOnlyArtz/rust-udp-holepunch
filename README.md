@@ -1,6 +1,10 @@
 # rust-udp-holepunch
 A small holepunching implementation written in Rust (UDP)
 
+#### Prerequisites
+Your rendezvous server must lay in a network which **doesn't** have a NAT!
+The peers may or may not lay in the same network
+
 ### Getting Started
 `server`
 (The server runs on port 3000)
